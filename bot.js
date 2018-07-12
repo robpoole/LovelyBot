@@ -66,7 +66,7 @@ client.on('message', message => {
                 .then(function ($) {
                     //var infoStuff = $("#res h3.r").length;
                     //var infoStuff = $("h1").text();
-                    var infoStuff = $("body").html();
+                    //var infoStuff = $("body").html();
                     var infoStuff = $('body .rc .s .f').find('cite').text();
 
                     let user = client.fetchUser('222047900006481920').then(user => {
