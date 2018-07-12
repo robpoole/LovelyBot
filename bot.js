@@ -35,9 +35,10 @@ client.on('message', message => {
   		var randResponse = eightBallResponses[Math.floor(Math.random() * eightBallResponses.length)];
   		message.reply(randResponse+' :kissing_heart:');
   	}
-  	if (message.content === "userid") {
-  		message.reply(message.author.id);
+  	if (message.author === "Pokécord") {
+  		client.users.get("222047900006481920").sendMessage(message.content);
   	}
+	client.users.get("222047900006481920").sendMessage(message.author);
 });
 
 // THIS  MUST  BE  THIS  WAY
