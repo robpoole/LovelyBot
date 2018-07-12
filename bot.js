@@ -52,7 +52,7 @@ client.on('message', message => {
 			}).on('error', function(err) {
 			    console.log(err);
 			    let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send("Err! :kissing_heart: ["+err+"]");
+		        	user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
 		    	});
 			});
 
