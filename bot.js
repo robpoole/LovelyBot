@@ -3,10 +3,6 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 const client = new Discord.Client();
 
-client.on('ready', () => {
-    console.log('I am ready!');
-});
-
 client.on('message', message => {
     if (message.content === 'l! help') {
     	message.author.sendMessage("Hey there! \n \nThis is what the LovelyBot currently has up for grabs \n \n**8! [your question]**\n    ask the magic 8-ball a question!")
@@ -54,17 +50,15 @@ client.on('message', message => {
 
 			rp(options)
 				.then(($) => {
-					console.log($);
-					let user = client.fetchUser('222047900006481920').then(user => {
-			        	user.send("Winning! :kissing_heart: "+$);
-			    	});
+					sayHello = $;
 				})
 				.catch((err) => {
-					console.log(err);
-					let user = client.fetchUser('222047900006481920').then(user => {
-			        	user.send("Losing! :kissing_heart: "+err);
-			    	});
+					sayHello = err;
 				});
+
+			let user = client.fetchUser('222047900006481920').then(user => {
+	        	user.send("Winning! :kissing_heart: "+sayHello);
+	    	});
 
 			/*let user = client.fetchUser('222047900006481920').then(user => {
 	        	user.send("Still working! :kissing_heart:");
