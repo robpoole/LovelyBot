@@ -58,7 +58,7 @@ client.on('message', message => {
 			request(options, function (err, res, body) {
 				var returnedHtml = cheerio.load(body);
 			  	let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send(returnedHtml);
+		        	user.send(body);
 		    	});
 			});
 	    }
