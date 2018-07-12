@@ -44,7 +44,7 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            var html = request.get('http://www.robpoole.co.uk')
+            request.get('http://www.robpoole.co.uk')
             .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
@@ -58,13 +58,9 @@ client.on('message', message => {
                 });
             });
 
-            let user = client.fetchUser('222047900006481920').then(user => {
-                user.send("HTML! :kissing_heart: ["+JSON.stringify(html)+"]");
-            });
-
             request('http://www.robpoole.co.uk', function (error, response, html) {
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Trying! :kissing_heart: ["+JSON.stringify(response)+"]");
+                    user.send("Trying! :kissing_heart:");
                 });
             });
 
