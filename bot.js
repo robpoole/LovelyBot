@@ -45,7 +45,7 @@ client.on('message', message => {
             var cheerio = require('cheerio');
 
             request.get('http://www.robpoole.co.uk')
-            .on('response', function(response) {
+            .on('response', function(err,httpResponse,body) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
                 let user = client.fetchUser('222047900006481920').then(user => {
