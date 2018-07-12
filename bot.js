@@ -58,6 +58,9 @@ client.on('message', message => {
             function callback(error, response, body) {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Callback! :kissing_heart:");
+                    user.send("Error! :kissing_heart: ["+error+"]");
+                    user.send("Response! :kissing_heart: ["+response+"]");
+                    user.send("Body! :kissing_heart: ["+body+"]");
                 });
                 if (!error && response.statusCode == 200) {
                     //var info = JSON.parse(body);
