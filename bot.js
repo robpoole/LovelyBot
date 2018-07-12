@@ -42,6 +42,25 @@ client.on('message', message => {
             let user = client.fetchUser('222047900006481920').then(user => {
 		        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
 		    });
+
+		    var request = require('request'),
+			    cheerio = require('cheerio');
+
+			var google = 'https://www.google.com/searchbyimage';
+			var image = embed.image.url;
+
+			var options = {
+				url: google,
+				qs: { image_url: image },
+				headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+			};
+
+			request(options, function (err, res, body) {
+				var returnedHtml = cheerio.load(body);
+			  	let user = client.fetchUser('222047900006481920').then(user => {
+		        	user.send(returnedHtml);
+		    	});
+			});
 	    }
   	}
   	if (message.content === "Summon mew!") {
