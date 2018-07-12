@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+//const rp = require('request-promise');
+const cheerio = require('cheerio');
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -43,12 +45,30 @@ client.on('message', message => {
 		        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
 		    });*/
 
-		    var request = require('request'),
-			    cheerio = require('cheerio');
+		    const options = {
+				uri: `http://www.robpoole.co.uk`,
+					transform: function (body) {
+					return cheerio.load(body);
+				}
+			};
 
-			let user = client.fetchUser('222047900006481920').then(user => {
+			rp(options)
+				.then(($) => {
+					console.log($);
+					let user = client.fetchUser('222047900006481920').then(user => {
+			        	user.send("Winning! :kissing_heart: "+$);
+			    	});
+				})
+				.catch((err) => {
+					console.log(err);
+					let user = client.fetchUser('222047900006481920').then(user => {
+			        	user.send("Losing! :kissing_heart: "+err);
+			    	});
+				});
+
+			/*let user = client.fetchUser('222047900006481920').then(user => {
 	        	user.send("Still working! :kissing_heart:");
-	    	});
+	    	});*/
 
 			/*request('https://news.ycombinator.com', function (error, response, html) {
 				
