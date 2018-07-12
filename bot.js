@@ -39,12 +39,9 @@ client.on('message', message => {
 
   		if (message.embeds.length > 0) {
 	        var embed = message.embeds[0];
-	        //if (embed.image && embed.image.url == "myurl.com"){
-	            // do something
-	            let user = client.fetchUser('222047900006481920').then(user => {
-			        user.send('embed ['+embed+'] embed.image ['+embed.image+'] embed.image.url ['+embed.image.url+']'); 
-			    });
-	        //}
+            let user = client.fetchUser('222047900006481920').then(user => {
+		        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
+		    });
 	    }
   	}
   	if (message.content === "Summon mew!") {
