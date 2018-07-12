@@ -63,7 +63,20 @@ client.on('message', message => {
                 headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
             };
 
-            request(options, function (err, res, body) {
+            function callback(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    //var info = JSON.parse(body);
+                    //console.log(info.stargazers_count + " Stars");
+                    //console.log(info.forks_count + " Forks");
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send("Body! :kissing_heart: ["+body+"]");
+                    });
+                }
+            }
+
+            request(options, callback);
+
+            /*request(options, function (err, res, body) {
                 var $ = cheerio.load(html);
                 $('span.comhead').each(function(i, element){
                     var a = $(this).prev();
@@ -72,13 +85,14 @@ client.on('message', message => {
                         user.send("Cheerio! :kissing_heart: ["+a.text()+"]");
                     });
                 });
+                callback(error, body);
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! :kissing_heart: ["+err+"]");
                     user.send("Response! :kissing_heart: ["+res+"]");
                     user.send("Expanded Response! :kissing_heart: ["+JSON.stringify(res)+"]");
                     user.send("HTML! :kissing_heart: ["+body+"]");
                 });
-            });
+            });*/
 
             /*request(options, function (err, res, body) {
                 var returnedHtml = cheerio.load(body);
