@@ -35,12 +35,16 @@ client.on('message', message => {
   		var randResponse = eightBallResponses[Math.floor(Math.random() * eightBallResponses.length)];
   		message.reply(randResponse+' :kissing_heart:');
   	}
-  	if (message.content === "testing") {
+  	if (message.author.username === "Pokécord") {
   		let user = client.fetchUser('222047900006481920').then(user => {
 	        // once promise returns with user, send user a DM
 	        user.send('Test message: ['+message.author+'] ['+message.author.username+'] ['+message.author.id+']'); 
 	    });
   	}
+  	if (message.content === "Summon mew!") {
+  		message.reply('I would if I could :kissing_heart:');
+  	}
+
 
 });
 
