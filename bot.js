@@ -52,7 +52,8 @@ client.on('message', message => {
                 });
             });*/
 
-            var google = 'https://www.google.com/searchbyimage';
+            //var google = 'https://www.google.com/searchbyimage';
+            var google = 'http://www.robpoole.co.uk';
             var image = embed.image.url;
 
             var options = {
