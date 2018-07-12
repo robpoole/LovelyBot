@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const rp = require('request-promise');
-const cheerio = require('cheerio');
 const client = new Discord.Client();
+//const rp = require('request-promise');
+//const cheerio = require('cheerio');
 
 client.on('message', message => {
     if (message.content === 'l! help') {
