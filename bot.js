@@ -46,12 +46,14 @@ client.on('message', message => {
 				console.log('error:', error); // Print the error if one occurred
 				console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 				console.log('body:', body); // Print the HTML for the Google homepage.
-				
+				var partOne = error;
+				var partTwo = response;
+				var partThree = body;
 			});
 			
 			let user = client.fetchUser('222047900006481920').then(user => {
-	        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
-	        	user.send("Still working! :kissing_heart:");
+	        	user.send("Still working! :kissing_heart: ["+partOne+"] ["+partTwo+"] ["+partThree+"]");
+	        	//user.send("Still working! :kissing_heart:");
 	    	});
 
 			/*request('https://news.ycombinator.com', function (error, response, html) {
