@@ -1,2 +1,2 @@
-# super-super-heroku-bot
-Bot using heroku, 24/7!
+# LovelyBot
+This is a lovely bot! 😘
