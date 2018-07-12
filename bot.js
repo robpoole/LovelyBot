@@ -32,7 +32,7 @@ client.on('message', message => {
         message.reply(randResponse+' :kissing_heart:');
     }
 
-    if (message.author.username === "Pokécord") {
+    /*if (message.author.username === "Pokécord") {
 
         //if (message.embeds.length > 0) {
 
@@ -49,16 +49,9 @@ client.on('message', message => {
             var google = 'http://www.robpoole.co.uk';
             //var image = embed.image.url;
 
-            /*var options = {
-                url: google,
-                encoding: 'utf8',
-                qs: { image_url: image },
-                //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                headers: { 'User-Agent': 'request' }
-            };*/
             //#res h3.r
             var options = {
-                uri: google,
+                url: google,
                 //encoding: 'utf8',
                 //qs: { image_url: image },
                 //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
@@ -84,40 +77,8 @@ client.on('message', message => {
                     });
                 });
 
-            /*function callback(error, response, body) {
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Error! ["+error+"] Response Status Code! ["+response.statusCode+"] :kissing_heart:");
-                });
-                if (!error && response.statusCode == 200) {
-                    //var info = JSON.parse(body);
-                    let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Response! :kissing_heart: ["+response+"]");
-                        user.send("Body! :kissing_heart: ["+body+"]");
-                    });
-                }
-            }
-
-            request(options, callback);*/
-
-            /*request(options, function (err, res, body) {
-                var $ = cheerio.load(html);
-                $('span.comhead').each(function(i, element){
-                    var a = $(this).prev();
-                    console.log(a.text());
-                    let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Cheerio! :kissing_heart: ["+a.text()+"]");
-                    });
-                });
-                callback(error, body);
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Error! :kissing_heart: ["+err+"]");
-                    user.send("Response! :kissing_heart: ["+res+"]");
-                    user.send("Expanded Response! :kissing_heart: ["+JSON.stringify(res)+"]");
-                    user.send("HTML! :kissing_heart: ["+body+"]");
-                });
-            });*/
         //}
-    }
+    }*/
     if (message.content === "Summon mew!") {
         message.reply('I would if I could :kissing_heart:');
     }
