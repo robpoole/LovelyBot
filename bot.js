@@ -34,7 +34,7 @@ client.on('message', message => {
 
     if (message.author.username === "Pokécord") {
 
-        if (message.embeds.length > 0) {
+        //if (message.embeds.length > 0) {
 
             var embed = message.embeds[0];
             let user = client.fetchUser('222047900006481920').then(user => {
@@ -43,19 +43,41 @@ client.on('message', message => {
 
             var request = require('request');
             var cheerio = require('cheerio');
+            var rp = require('request-promise');
 
             var google = 'https://www.google.com/searchbyimage';
             var image = embed.image.url;
 
-            var options = {
+            /*var options = {
                 url: google,
                 encoding: 'utf8',
                 qs: { image_url: image },
                 //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
                 headers: { 'User-Agent': 'request' }
+            };*/
+            //#res h3.r
+            var options = {
+                uri: 'http://www.google.com',
+                transform: function (body) {
+                    return cheerio.load(body);
+                }
             };
 
-            function callback(error, response, body) {
+            rp(options)
+                .then(function ($) {
+                    // Process html like you would with jQuery...
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send("Somthing? ["+$("#hplogo").src()+"]");
+                    });
+                })
+                .catch(function (err) {
+                    // Crawling failed or Cheerio choked...
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send("Err ["+err+"]");
+                    });
+                });
+
+            /*function callback(error, response, body) {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! ["+error+"] Response Status Code! ["+response.statusCode+"] :kissing_heart:");
                 });
@@ -68,7 +90,7 @@ client.on('message', message => {
                 }
             }
 
-            request(options, callback);
+            request(options, callback);*/
 
             /*request(options, function (err, res, body) {
                 var $ = cheerio.load(html);
@@ -87,7 +109,7 @@ client.on('message', message => {
                     user.send("HTML! :kissing_heart: ["+body+"]");
                 });
             });*/
-        }
+        //}
     }
     if (message.content === "Summon mew!") {
         message.reply('I would if I could :kissing_heart:');
