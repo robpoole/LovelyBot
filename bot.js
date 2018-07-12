@@ -64,8 +64,9 @@ client.on('message', message => {
 
             rp(options)
                 .then(function ($) {
-                    var infoStuff = $("#res h3.r").length;
+                    //var infoStuff = $("#res h3.r").length;
                     //var infoStuff = $("h1").text();
+                    var infoStuff = $("h1 a").attr('title');
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Something? ["+infoStuff+"]");
                     });
