@@ -71,7 +71,7 @@ client.on('message', message => {
                 }
             }
 
-            request(options, callback);
+            request.get(options, callback);
 
             /*request(options, function (err, res, body) {
                 var $ = cheerio.load(html);
