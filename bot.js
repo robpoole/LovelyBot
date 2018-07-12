@@ -44,9 +44,18 @@ client.on('message', message => {
 		    });
 
 		    var request = require('request'),
-			    cheerio = require('cheerio');
+			var cheerio = require('cheerio');
 
-			var google = 'https://www.google.com/searchbyimage';
+			request('https://news.ycombinator.com', function (error, response, html) {
+				if (!error && response.statusCode == 200) {
+					console.log(html);
+					let user = client.fetchUser('222047900006481920').then(user => {
+			        	user.send(html);
+			    	});
+				}
+			});
+
+			/*var google = 'https://www.google.com/searchbyimage';
 			var image = embed.image.url;
 
 			var options = {
@@ -60,7 +69,7 @@ client.on('message', message => {
 			  	let user = client.fetchUser('222047900006481920').then(user => {
 		        	user.send(body);
 		    	});
-			});
+			});*/
 	    }
   	}
   	if (message.content === "Summon mew!") {
