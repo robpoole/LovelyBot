@@ -66,7 +66,7 @@ client.on('message', message => {
                 if (!error && response.statusCode == 200) {
                     //var info = JSON.parse(body);
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Body! :kissing_heart: ["+body+"]");
+                        user.send("No Worries! :kissing_heart:");
                     });
                 }
             }
