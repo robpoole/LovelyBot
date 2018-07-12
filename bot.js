@@ -44,31 +44,18 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            /*request.get('http://www.robpoole.co.uk')
-            .on('response', function(response) {
+            request.get('http://www.robpoole.co.uk')
+            .on('response', function(error, response, html) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"]");
+                    user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"] ["+JSON.stringify(html)+"]");
                 });
-            }).on('error', function(err) {
-                console.log(err);
+            }).on('error', function(error, response, html) {
+                console.log(error);
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
+                    user.send("Err! :kissing_heart: ["+JSON.stringify(error)+"]");
                 });
-            });*/
-
-            request('http://www.robpoole.co.uk', function (error, response, html) {
-            	let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("HTML! :kissing_heart: ["+JSON.stringify(html)+"]");
-                });
-                /*if (!error && response.statusCode == 200) {
-                    var $ = cheerio.load(html);
-                    $('span.comhead').each(function(i, element) {
-                        var a = $(this).prev();
-                        console.log(a.text());
-                    });
-                }*/
             });
 
             /*var google = 'https://www.google.com/searchbyimage';
