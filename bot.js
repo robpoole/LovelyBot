@@ -47,7 +47,7 @@ client.on('message', message => {
 				console.log(response.statusCode);
 				console.log(response.headers['content-type']);
 				let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send("Err! :kissing_heart: ["+response+"]");
+		        	user.send("Win! :kissing_heart: ["+response+"]");
 		    	});
 			}).on('error', function(err) {
 			    console.log(err);
@@ -55,13 +55,6 @@ client.on('message', message => {
 		        	user.send("Err! :kissing_heart: ["+err+"]");
 		    	});
 			});
-
-			/*request('https://news.ycombinator.com', function (error, response, html) {
-				
-				if (!error && response.statusCode == 200) {
-					console.log(html);
-				}
-			});*/
 
 			/*var google = 'https://www.google.com/searchbyimage';
 			var image = embed.image.url;
