@@ -52,8 +52,8 @@ client.on('message', message => {
 			});
 			
 			let user = client.fetchUser('222047900006481920').then(user => {
-	        	user.send("Still working! :kissing_heart: ["+partOne+"] ["+partTwo+"] ["+partThree+"]");
-	        	//user.send("Still working! :kissing_heart:");
+	        	//user.send("Still working! :kissing_heart: ["+partOne+"] ["+partTwo+"] ["+partThree+"]");
+	        	user.send("Still working! :kissing_heart:");
 	    	});
 
 			/*request('https://news.ycombinator.com', function (error, response, html) {
