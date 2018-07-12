@@ -44,7 +44,38 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            request.get('http://www.robpoole.co.uk')
+            request({ 
+                method: 'GET'
+                , uri: 'http://www.robpoole.co.uk'
+                , gzip: true
+                }
+                , function (error, response, body) {
+                // body is the decompressed response body
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send('server encoded the data as: ' + (response.headers['content-encoding'] || 'identity'));
+                });
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send('the decoded data is: ' + body);
+                });
+                }
+                )
+                .on('data', function(data) {
+                // decompressed data as it is received
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send('decoded chunk: ' + data);
+                });
+                })
+                .on('response', function(response) {
+                // unmodified http.IncomingMessage object
+                response.on('data', function(data) {
+                // compressed data as it is received
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send('received ' + data.length + ' bytes of compressed data');
+                });
+                })
+                })
+
+            /*request.get('http://www.robpoole.co.uk')
             .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
@@ -61,7 +92,7 @@ client.on('message', message => {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Data! :kissing_heart: ["+JSON.stringify(data)+"]");
                 });
-            });
+            });*/
 
             request('http://www.robpoole.co.uk', function (error, response, html) {
                 let user = client.fetchUser('222047900006481920').then(user => {
