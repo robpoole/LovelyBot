@@ -57,6 +57,7 @@ client.on('message', message => {
 
             var options = {
                 url: google,
+                encoding: 'utf8',
                 qs: { image_url: image },
                 headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
             };
