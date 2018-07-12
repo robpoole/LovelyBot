@@ -50,7 +50,7 @@ client.on('message', message => {
 		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
 		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
 		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
-		        	user.send("Still working! :kissing_heart: ["+error+"]");
+		        	user.send("Still working! :kissing_heart: ["+body+"]");
 		        	//user.send("Still working! :kissing_heart:");
 		    	});
 			});
