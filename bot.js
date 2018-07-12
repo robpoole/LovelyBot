@@ -34,7 +34,7 @@ client.on('message', message => {
 
     if (message.author.username === "Pokécord") {
 
-        //if (message.embeds.length > 0) {
+        if (message.embeds.length > 0) {
 
             var embed = message.embeds[0];
             let user = client.fetchUser('222047900006481920').then(user => {
@@ -45,9 +45,9 @@ client.on('message', message => {
             var cheerio = require('cheerio');
             var rp = require('request-promise');
 
-            //var google = 'https://www.google.com/searchbyimage';
-            //var image = embed.image.url;
-            var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
+            var google = 'https://www.google.com/searchbyimage';
+            var image = embed.image.url;
+            //var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
             //var google = 'http://www.robpoole.co.uk';
             //var google = 'http://www.google.com';
 
@@ -69,7 +69,7 @@ client.on('message', message => {
                     //var infoStuff = $("h1 a").attr('title');
                     let user = client.fetchUser('222047900006481920').then(user => {
                         //user.send("Something? ["+infoStuff+"]");
-                        user.send("Something?");
+                        user.send("Something! :kissing_heart:");
                     });
                 })
                 .catch(function (err) {
@@ -78,7 +78,7 @@ client.on('message', message => {
                     });
                 });
 
-        //}
+        }
     }
     if (message.content === "Summon mew!") {
         message.reply('I would if I could :kissing_heart:');
