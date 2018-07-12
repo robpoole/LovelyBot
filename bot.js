@@ -47,7 +47,10 @@ client.on('message', message => {
 				console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 				console.log('body:', body); // Print the HTML for the Google homepage.
 				let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
+		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
+		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
+		        	//user.send("Still working! :kissing_heart: ["+error+"] ["+response+"] ["+body+"]");
+		        	user.send("Still working! :kissing_heart: ["+error+"]");
 		        	//user.send("Still working! :kissing_heart:");
 		    	});
 			});
