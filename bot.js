@@ -50,15 +50,12 @@ client.on('message', message => {
 	        	user.send("Still working! :kissing_heart:");
 	    	});
 
-			request('https://news.ycombinator.com', function (error, response, html) {
+			/*request('https://news.ycombinator.com', function (error, response, html) {
 				
 				if (!error && response.statusCode == 200) {
 					console.log(html);
-					let user = client.fetchUser('222047900006481920').then(user => {
-			        	user.send(html);
-			    	});
 				}
-			});
+			});*/
 
 			/*var google = 'https://www.google.com/searchbyimage';
 			var image = embed.image.url;
