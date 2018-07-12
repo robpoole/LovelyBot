@@ -49,12 +49,13 @@ client.on('message', message => {
 				//var partOne = error;
 				//var partTwo = response;
 				//var partThree = body;
+				let user = client.fetchUser('222047900006481920').then(user => {
+		        	//user.send("Still working! :kissing_heart: ["+partOne+"] ["+partTwo+"] ["+partThree+"]");
+		        	user.send("Still working! :kissing_heart:");
+		    	});
 			});
 			
-			let user = client.fetchUser('222047900006481920').then(user => {
-	        	//user.send("Still working! :kissing_heart: ["+partOne+"] ["+partTwo+"] ["+partThree+"]");
-	        	user.send("Still working! :kissing_heart:");
-	    	});
+			
 
 			/*request('https://news.ycombinator.com', function (error, response, html) {
 				
