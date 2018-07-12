@@ -60,6 +60,7 @@ client.on('message', message => {
                     user.send("Callback! :kissing_heart:");
                     user.send("Error! :kissing_heart: ["+error+"]");
                     user.send("Response! :kissing_heart: ["+response+"]");
+                    user.send("Response Status Code! :kissing_heart: ["+response.statusCode+"]");
                     user.send("Body! :kissing_heart: ["+body+"]");
                 });
                 if (!error && response.statusCode == 200) {
