@@ -45,16 +45,16 @@ client.on('message', message => {
             var cheerio = require('cheerio');
 
             request.get('http://www.robpoole.co.uk')
-            .on('response', function(error, response, html) {
+            .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"] ["+JSON.stringify(html)+"]");
                 });
-            }).on('error', function(error, response, html) {
-                console.log(error);
+            }).on('error', function(err) {
+                console.log(err);
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Err! :kissing_heart: ["+JSON.stringify(error)+"]");
+                    user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
                 });
             });
 
