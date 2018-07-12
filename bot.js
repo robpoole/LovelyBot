@@ -7,8 +7,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === 'l! help') {
-    	message.reply('pong');
-    	message.author.sendMessage("Hey there! \n \n This is what the LovelyBot currently has up for grabs \n \n !8 [your question] = ask the magic 8-ball a question!")
+    	message.author.sendMessage("Hey there! \n \n This is what the LovelyBot currently has up for grabs \n \n8! [your question]\n    ask the magic 8-ball a question!")
   	}
   	if (message.content.substring(0, 2) === '8!') {
   		var eightBallResponses = [
