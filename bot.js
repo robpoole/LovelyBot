@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-//const rp = require('request-promise');
+const rp = require('request-promise');
 const cheerio = require('cheerio');
 const client = new Discord.Client();
 
