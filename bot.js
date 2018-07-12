@@ -49,8 +49,7 @@ client.on('message', message => {
             var google = 'http://www.robpoole.co.uk';
             //var image = embed.image.url;
 
-            //#res h3.r
-            var options = {
+            /*var options = {
                 url: google,
                 //encoding: 'utf8',
                 //qs: { image_url: image },
@@ -75,7 +74,7 @@ client.on('message', message => {
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Err ["+err+"]");
                     });
-                });
+                });*/
 
         //}
     }
