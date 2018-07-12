@@ -45,7 +45,7 @@ client.on('message', message => {
             var cheerio = require('cheerio');
 
             request.get('http://www.robpoole.co.uk')
-            .on('response', function(err,httpResponse,body) {
+            .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
                 let user = client.fetchUser('222047900006481920').then(user => {
@@ -55,6 +55,11 @@ client.on('message', message => {
                 console.log(err);
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
+                });
+            }).on('data', function(data) {
+                // decompressed data as it is received
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send("Data! :kissing_heart: ["+JSON.stringify(data)+"]");
                 });
             });
 
