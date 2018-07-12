@@ -47,7 +47,7 @@ client.on('message', message => {
 
             //var google = 'https://www.google.com/searchbyimage';
             var google = 'http://www.robpoole.co.uk';
-            var image = embed.image.url;
+            //var image = embed.image.url;
 
             /*var options = {
                 url: google,
@@ -59,10 +59,10 @@ client.on('message', message => {
             //#res h3.r
             var options = {
                 url: google,
-                encoding: 'utf8',
-                qs: { image_url: image },
+                //encoding: 'utf8',
+                //qs: { image_url: image },
                 //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                headers: { 'User-Agent': 'request' }
+                //headers: { 'User-Agent': 'request' }
                 transform: function (body) {
                     return cheerio.load(body);
                 }
