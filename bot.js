@@ -66,8 +66,8 @@ client.on('message', message => {
                 .then(function ($) {
                     //var infoStuff = $("#res h3.r").length;
                     //var infoStuff = $("h1").text();
-                    //var infoStuff = $("body").html();
-                    var infoStuff = $('body .rc .s .f').find('cite').text();
+                    var infoStuff = $("body").attr('id');
+                    //var infoStuff = $('body .rc .s .f').find('cite').text();
 
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Something! :kissing_heart:");
