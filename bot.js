@@ -36,10 +36,16 @@ client.on('message', message => {
   		message.reply(randResponse+' :kissing_heart:');
   	}
   	if (message.author.username === "Pokécord") {
-  		let user = client.fetchUser('222047900006481920').then(user => {
-	        // once promise returns with user, send user a DM
-	        user.send('message content ['+message.content+'] attachments ['+message.attachments+'] cleanContent ['+message.cleanContent+'] embeds ['+message.embeds+']'); 
-	    });
+
+  		if (message.embeds.length > 0) {
+	        var embed = message.embeds[0];
+	        //if (embed.image && embed.image.url == "myurl.com"){
+	            // do something
+	            let user = client.fetchUser('222047900006481920').then(user => {
+			        user.send('embed ['+embed+'] embed.image ['+embed.image+'] embed.image.url ['+embed.image.url+']'); 
+			    });
+	        //}
+	    }
   	}
   	if (message.content === "Summon mew!") {
   		message.reply('I would if I could :kissing_heart:');
