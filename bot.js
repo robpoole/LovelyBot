@@ -37,25 +37,38 @@ client.on('message', message => {
         if (message.embeds.length > 0) {
 
             var embed = message.embeds[0];
-            /*let user = client.fetchUser('222047900006481920').then(user => {
+            let user = client.fetchUser('222047900006481920').then(user => {
                 user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
-            });*/
+            });
 
             var request = require('request');
             var cheerio = require('cheerio');
 
-            request.get('http://www.robpoole.co.uk')
-            .on('response', function(response, html) {
+            /*request.get('http://www.robpoole.co.uk')
+            .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Win! :kissing_heart: ["+JSON.stringify(html)+"]");
+                    user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"]");
                 });
             }).on('error', function(err) {
                 console.log(err);
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
                 });
+            });*/
+
+            request('http://www.robpoole.co.uk', function (error, response, html) {
+            	let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send("HTML! :kissing_heart: ["+JSON.stringify(html)+"]");
+                });
+                /*if (!error && response.statusCode == 200) {
+                    var $ = cheerio.load(html);
+                    $('span.comhead').each(function(i, element) {
+                        var a = $(this).prev();
+                        console.log(a.text());
+                    });
+                }*/
             });
 
             /*var google = 'https://www.google.com/searchbyimage';
