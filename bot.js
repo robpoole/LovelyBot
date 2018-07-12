@@ -35,6 +35,9 @@ client.on('message', message => {
   		var randResponse = eightBallResponses[Math.floor(Math.random() * eightBallResponses.length)];
   		message.reply(randResponse+' :kissing_heart:');
   	}
+  	if (message.content === "userid") {
+  		message.reply(client.users.get("someID").send("someMessage"));
+  	}
 });
 
 // THIS  MUST  BE  THIS  WAY
