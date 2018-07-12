@@ -41,7 +41,7 @@ client.on('message', message => {
 		        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
 		    });*/
 
-		    const options = {
+		    /*const options = {
 				uri: `http://www.robpoole.co.uk`,
 					transform: function (body) {
 					return cheerio.load(body);
@@ -58,11 +58,11 @@ client.on('message', message => {
 
 			let user = client.fetchUser('222047900006481920').then(user => {
 	        	user.send("Winning! :kissing_heart: "+sayHello);
-	    	});
-
-			/*let user = client.fetchUser('222047900006481920').then(user => {
-	        	user.send("Still working! :kissing_heart:");
 	    	});*/
+
+			let user = client.fetchUser('222047900006481920').then(user => {
+	        	user.send("Still working! :kissing_heart:");
+	    	});
 
 			/*request('https://news.ycombinator.com', function (error, response, html) {
 				
