@@ -57,7 +57,11 @@ client.on('message', message => {
             };*/
             //#res h3.r
             var options = {
-                uri: 'http://www.robpoole.co.uk',
+                url: google,
+                encoding: 'utf8',
+                qs: { image_url: image },
+                //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+                headers: { 'User-Agent': 'request' }
                 transform: function (body) {
                     return cheerio.load(body);
                 }
@@ -67,7 +71,8 @@ client.on('message', message => {
                 .then(function ($) {
                     // Process html like you would with jQuery...
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Something? ["+$("h1").text()+"]");
+                        //user.send("Something? ["+$("h1").text()+"]");
+                        user.send("Something? ["+$("#res h3.r").length+"]");
                         //user.send("Something?");
                     });
                 })
