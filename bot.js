@@ -47,14 +47,15 @@ client.on('message', message => {
 
             //var google = 'https://www.google.com/searchbyimage';
             //var image = embed.image.url;
-            var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
+            //var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
+            var google = 'http://www.robpoole.co.uk';
 
             var options = {
                 url: google,
                 //encoding: 'utf8',
                 //qs: { image_url: image },
                 //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                headers: { 'User-Agent': 'request' }
+                //headers: { 'User-Agent': 'request' }
                 transform: function (body) {
                     return cheerio.load(body);
                 }
@@ -62,11 +63,10 @@ client.on('message', message => {
 
             rp(options)
                 .then(function ($) {
-                    var infoStuff = $("#res h3.r").length;
+                    //var infoStuff = $("#res h3.r").length;
+                    var infoStuff = $("h1").text();
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        //user.send("Something? ["+$("h1").text()+"]");
                         user.send("Something? ["+infoStuff+"]");
-                        //user.send("Something?");
                     });
                 })
                 .catch(function (err) {
