@@ -47,7 +47,7 @@ client.on('message', message => {
 				console.log(response.statusCode);
 				console.log(response.headers['content-type']);
 				let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send("Win! :kissing_heart: ["+response+"]");
+		        	user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"]");
 		    	});
 			}).on('error', function(err) {
 			    console.log(err);
