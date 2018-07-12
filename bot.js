@@ -38,7 +38,7 @@ client.on('message', message => {
   	if (message.content === "testing") {
   		let user = client.fetchUser('222047900006481920').then(user => {
 	        // once promise returns with user, send user a DM
-	        user.send('Test message: ['+message.author+']'); 
+	        user.send('Test message: ['+message.author+'] ['+message.author.username+'] ['+message.author.id+']'); 
 	    });
   	}
 
