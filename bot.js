@@ -56,12 +56,13 @@ client.on('message', message => {
             };
 
             function callback(error, response, body) {
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send("Error! ["+error+"] Response Status Code! ["+response.statusCode+"] :kissing_heart:");
+                });
                 if (!error && response.statusCode == 200) {
                     //var info = JSON.parse(body);
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Error! :kissing_heart: ["+error+"]");
                         user.send("Response! :kissing_heart: ["+response+"]");
-                        user.send("Response Status Code! :kissing_heart: ["+response.statusCode+"]");
                         user.send("Body! :kissing_heart: ["+body+"]");
                     });
                 }
