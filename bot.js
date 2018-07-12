@@ -47,6 +47,10 @@ client.on('message', message => {
 			    cheerio = require('cheerio');
 
 			request('https://news.ycombinator.com', function (error, response, html) {
+
+				let user = client.fetchUser('222047900006481920').then(user => {
+		        	user.send(response+" // "+html);
+		    	});
 				if (!error && response.statusCode == 200) {
 					console.log(html);
 					let user = client.fetchUser('222047900006481920').then(user => {
