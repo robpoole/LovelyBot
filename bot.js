@@ -44,7 +44,7 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            var html = request.get('http://www.robpoole.co.uk')
+            request.get('http://www.robpoole.co.uk')
             .on('response', function(response) {
                 console.log(response.statusCode);
                 console.log(response.headers['content-type']);
