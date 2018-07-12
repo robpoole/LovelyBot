@@ -64,6 +64,14 @@ client.on('message', message => {
             };
 
             request(options, function (err, res, body) {
+                var $ = cheerio.load(html);
+                $('span.comhead').each(function(i, element){
+                    var a = $(this).prev();
+                    console.log(a.text());
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send("Cheerio! :kissing_heart: ["+a.text()+"]");
+                    });
+                });
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! :kissing_heart: ["+err+"]");
                     user.send("Response! :kissing_heart: ["+res+"]");
