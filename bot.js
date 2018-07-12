@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const cheerio = require('cheerio');
 
 client.on('message', message => {
     if (message.content === 'l! help') {
@@ -39,6 +38,9 @@ client.on('message', message => {
             /*let user = client.fetchUser('222047900006481920').then(user => {
 		        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
 		    });*/
+
+		    var request = require('request');
+			var cheerio = require('cheerio');
 
 			let user = client.fetchUser('222047900006481920').then(user => {
 	        	user.send("Still working! :kissing_heart:");
