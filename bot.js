@@ -64,8 +64,9 @@ client.on('message', message => {
                 .then(function ($) {
                     // Process html like you would with jQuery...
                     let user = client.fetchUser('222047900006481920').then(user => {
+                        var infoStuff = $("#res h3.r").length;
                         //user.send("Something? ["+$("h1").text()+"]");
-                        user.send("Something? ["+$("#res h3.r").length+"]");
+                        user.send("Something? ["+infoStuff+"]");
                         //user.send("Something?");
                     });
                 })
