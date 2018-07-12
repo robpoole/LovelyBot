@@ -47,8 +47,8 @@ client.on('message', message => {
 
             //var google = 'https://www.google.com/searchbyimage';
             //var image = embed.image.url;
-            var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
-            //var google = 'http://www.robpoole.co.uk';
+            //var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
+            var google = 'http://www.robpoole.co.uk';
 
             var options = {
                 url: google,
