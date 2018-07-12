@@ -46,8 +46,8 @@ client.on('message', message => {
             var rp = require('request-promise');
 
             //var google = 'https://www.google.com/searchbyimage';
-            var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
             //var image = embed.image.url;
+            var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
 
             var options = {
                 url: google,
@@ -62,16 +62,14 @@ client.on('message', message => {
 
             rp(options)
                 .then(function ($) {
-                    // Process html like you would with jQuery...
+                    var infoStuff = $("#res h3.r").length;
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        var infoStuff = $("#res h3.r").length;
                         //user.send("Something? ["+$("h1").text()+"]");
                         user.send("Something? ["+infoStuff+"]");
                         //user.send("Something?");
                     });
                 })
                 .catch(function (err) {
-                    // Crawling failed or Cheerio choked...
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Err ["+err+"]");
                     });
