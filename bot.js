@@ -36,10 +36,10 @@ client.on('message', message => {
 
         //if (message.embeds.length > 0) {
 
-            var embed = message.embeds[0];
-            let user = client.fetchUser('222047900006481920').then(user => {
-                user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
-            });
+            //var embed = message.embeds[0];
+            //let user = client.fetchUser('222047900006481920').then(user => {
+            //    user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
+            //});
 
             var request = require('request');
             var cheerio = require('cheerio');
