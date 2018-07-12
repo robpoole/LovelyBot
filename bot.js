@@ -44,29 +44,15 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            request.get('http://www.robpoole.co.uk')
-            .on('response', function(response) {
-                console.log(response.statusCode);
-                console.log(response.headers['content-type']);
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Win! :kissing_heart: ["+JSON.stringify(response)+"]");
-                });
-            }).on('error', function(err) {
-                console.log(err);
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Err! :kissing_heart: ["+JSON.stringify(err)+"]");
-                });
-            });
-
-            request('http://www.robpoole.co.uk', function (error, response, html) {
+            /*request('http://www.robpoole.co.uk', function (error, response, html) {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! :kissing_heart: ["+error+"]");
                     user.send("Response! :kissing_heart: ["+response+"]");
                     user.send("HTML! :kissing_heart: ["+html+"]");
                 });
-            });
+            });*/
 
-            /*var google = 'https://www.google.com/searchbyimage';
+            var google = 'https://www.google.com/searchbyimage';
             var image = embed.image.url;
 
             var options = {
@@ -76,6 +62,14 @@ client.on('message', message => {
             };
 
             request(options, function (err, res, body) {
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send("Error! :kissing_heart: ["+error+"]");
+                    user.send("Response! :kissing_heart: ["+response+"]");
+                    user.send("HTML! :kissing_heart: ["+html+"]");
+                });
+            });
+
+            /*request(options, function (err, res, body) {
                 var returnedHtml = cheerio.load(body);
                   let user = client.fetchUser('222047900006481920').then(user => {
                     user.send(body);
