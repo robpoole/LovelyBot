@@ -45,30 +45,30 @@ client.on('message', message => {
             var cheerio = require('cheerio');
             var rp = require('request-promise');
 
-            //var google = 'https://www.google.com/searchbyimage';
-            var google = 'http://www.robpoole.co.uk';
+            var google = 'https://www.google.com/searchbyimage';
             var image = embed.image.url;
 
-            var options = {
+            /*var options = {
                 url: google,
                 encoding: 'utf8',
                 qs: { image_url: image },
                 //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
                 headers: { 'User-Agent': 'request' }
-            };
+            };*/
             //#res h3.r
-            /*var options = {
-                uri: 'http://www.google.com',
+            var options = {
+                uri: 'http://www.robpoole.co.uk',
                 transform: function (body) {
                     return cheerio.load(body);
                 }
-            };*/
+            };
 
-            /*rp(options)
+            rp(options)
                 .then(function ($) {
                     // Process html like you would with jQuery...
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Somthing? ["+$("#hplogo").src()+"]");
+                        //user.send("Somthing? ["+$("#hplogo").src()+"]");
+                        user.send("Somthing?");
                     });
                 })
                 .catch(function (err) {
@@ -76,9 +76,9 @@ client.on('message', message => {
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Err ["+err+"]");
                     });
-                });*/
+                });
 
-            function callback(error, response, body) {
+            /*function callback(error, response, body) {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! ["+error+"] Response Status Code! ["+response.statusCode+"] :kissing_heart:");
                 });
@@ -91,7 +91,7 @@ client.on('message', message => {
                 }
             }
 
-            request(options, callback);
+            request(options, callback);*/
 
             /*request(options, function (err, res, body) {
                 var $ = cheerio.load(html);
