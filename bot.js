@@ -36,7 +36,7 @@ client.on('message', message => {
   		message.reply(randResponse+' :kissing_heart:');
   	}
   	if (message.content === "userid") {
-  		message.reply(client.users.get("someID").send("someMessage"));
+  		message.reply(message.author.id);
   	}
 });
 
