@@ -60,7 +60,7 @@ client.on('message', message => {
 
             request('http://www.robpoole.co.uk', function (error, response, html) {
                 let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Trying! :kissing_heart:");
+                    user.send("Trying! :kissing_heart: ["+JSON.stringify(html)+"]");
                 });
             });
 
