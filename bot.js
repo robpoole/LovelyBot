@@ -44,30 +44,23 @@ client.on('message', message => {
             var request = require('request');
             var cheerio = require('cheerio');
 
-            /*request('http://www.robpoole.co.uk', function (error, response, html) {
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send("Error! :kissing_heart: ["+error+"]");
-                    user.send("Response! :kissing_heart: ["+response+"]");
-                    user.send("HTML! :kissing_heart: ["+html+"]");
-                });
-            });*/
-
             var google = 'https://www.google.com/searchbyimage';
-            //var google = 'http://www.robpoole.co.uk';
             var image = embed.image.url;
 
             var options = {
                 url: google,
                 encoding: 'utf8',
                 qs: { image_url: image },
-                headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+                //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+                headers: { 'User-Agent': 'request' }
             };
 
             function callback(error, response, body) {
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send("Callback! :kissing_heart:");
+                });
                 if (!error && response.statusCode == 200) {
                     //var info = JSON.parse(body);
-                    //console.log(info.stargazers_count + " Stars");
-                    //console.log(info.forks_count + " Forks");
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Body! :kissing_heart: ["+body+"]");
                     });
@@ -91,13 +84,6 @@ client.on('message', message => {
                     user.send("Response! :kissing_heart: ["+res+"]");
                     user.send("Expanded Response! :kissing_heart: ["+JSON.stringify(res)+"]");
                     user.send("HTML! :kissing_heart: ["+body+"]");
-                });
-            });*/
-
-            /*request(options, function (err, res, body) {
-                var returnedHtml = cheerio.load(body);
-                  let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send(body);
                 });
             });*/
         }
