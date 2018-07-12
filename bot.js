@@ -46,11 +46,12 @@ client.on('message', message => {
 		    var request = require('request'),
 			    cheerio = require('cheerio');
 
-			request('https://news.ycombinator.com', function (error, response, html) {
+			let user = client.fetchUser('222047900006481920').then(user => {
+	        	user.send("Still working! :kissing_heart:");
+	    	});
 
-				let user = client.fetchUser('222047900006481920').then(user => {
-		        	user.send(response+" // "+html);
-		    	});
+			request('https://news.ycombinator.com', function (error, response, html) {
+				
 				if (!error && response.statusCode == 200) {
 					console.log(html);
 					let user = client.fetchUser('222047900006481920').then(user => {
