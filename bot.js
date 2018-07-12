@@ -65,6 +65,7 @@ client.on('message', message => {
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send("Error! :kissing_heart: ["+err+"]");
                     user.send("Response! :kissing_heart: ["+res+"]");
+                    user.send("Expanded Response! :kissing_heart: ["+JSON.stringify(res)+"]");
                     user.send("HTML! :kissing_heart: ["+body+"]");
                 });
             });
