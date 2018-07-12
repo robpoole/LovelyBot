@@ -10,6 +10,7 @@ client.on('message', message => {
     	message.reply('pong');
     	message.author.sendMessage("Hey there! \n \n This is what the LovelyBot currently has up for grabs \n \n !8 [your question] = ask the magic 8-ball a question!")
   	}
+  	message.reply(message.content.substring(0, 2));
   	if (message.content.substring(0, 2) === '8!') {
   		var eightBallResponses = [
 	  		'It is certain', 
@@ -34,7 +35,7 @@ client.on('message', message => {
 	  		'Very doubtful'
   		];
   		var randResponse = eightBallResponses[Math.floor(Math.random() * eightBallResponses.length)];
-  		message.reply(randResponse);
+  		message.reply(randResponse+' :kissing_heart:');
   	}
 });
 
