@@ -32,7 +32,7 @@ client.on('message', message => {
         message.reply(randResponse+' :kissing_heart:');
     }
 
-    /*if (message.author.username === "Pokécord") {
+    if (message.author.username === "Pokécord") {
 
         //if (message.embeds.length > 0) {
 
@@ -78,7 +78,7 @@ client.on('message', message => {
                 });
 
         //}
-    }*/
+    }
     if (message.content === "Summon mew!") {
         message.reply('I would if I could :kissing_heart:');
     }
