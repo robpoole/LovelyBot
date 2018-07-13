@@ -66,7 +66,7 @@ client.on('message', message => {
                 .then(function ($) {
                     //var infoStuff = $("#res h3.r").length;
                     //var infoStuff = $("h2").text();
-                    var infoStuff = $("body").html();
+                    var infoStuff = $(".gb_Db").text();
                     //var infoStuff = $("body").attr('id');
                     //var infoStuff = $('body .rc .s .f').find('cite').text();
 
