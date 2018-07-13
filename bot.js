@@ -38,8 +38,8 @@ client.on('message', message => {
 
             var embed = message.embeds[0];
 
-            var imageUrl = embed.image.url;
-            var urlCheck = imageUrl.slice(-17);
+            //var imageUrl = embed.image.url;
+            //var urlCheck = imageUrl.slice(-17);
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
 
