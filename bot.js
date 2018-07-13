@@ -39,7 +39,7 @@ client.on('message', message => {
             var embed = message.embeds[0];
 
             let user = client.fetchUser('222047900006481920').then(user => {
-                user.send(message.embeds[0]);
+                user.send('hi! '+message.embeds);
             });
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
