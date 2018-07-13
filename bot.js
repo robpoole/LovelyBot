@@ -82,9 +82,9 @@ client.on('message', message => {
                     });
                 })
                 .finally(function ($) {
-                    var infoStuff = $("h2").text();
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Finally Something? :kissing_heart:");
+                        var infoStuff = $("h2").text();
                         user.send("Finally Something! ["+infoStuff+"]");
                     });
                     $('cite').each(function() {
