@@ -43,7 +43,7 @@ client.on('message', message => {
             });
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
-            if (embed.image.url !== null) {
+            if (embed.image != null) {
 
                 var request = require('request');
                 var cheerio = require('cheerio');
