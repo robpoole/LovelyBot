@@ -43,57 +43,35 @@ client.on('message', message => {
 
             var request = require('request');
             var cheerio = require('cheerio');
-            var rp = require('request-promise');
 
             var google = 'https://www.google.com/searchbyimage';
             var image = embed.image.url;
-            //var google = 'https://images.google.com/searchbyimage?image_url=https://cdn.discordapp.com/attachments/439530363035975680/467018998786293770/PokecordSpawn.jpg';
-            //var google = 'http://www.robpoole.co.uk';
-            //var google = 'http://www.google.com';
 
             var options = {
                 url: google,
-                //encoding: 'utf8',
                 qs: { image_url: image },
-                //headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                //headers: { 'User-Agent': 'request' }
-                transform: function (body) {
-                    return cheerio.load(body);
-                }
+                headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
             };
 
-            rp(options)
-                .then(function ($) {
+            function callback(error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    var $ = cheerio.load(body);
                     var infoStuff = $("h2").text();
-                    let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Something? :kissing_heart:");
-                        user.send("Something! ["+infoStuff+"]");
-                    });
                     $('cite').each(function() {
-                        let user = client.fetchUser('222047900006481920').then(user => {
-                            user.send("HERE?!?!? :kissing_heart:");
-                            user.send("Yes! ["+$(this).text()+"]");
-                        });
+                        if ($(this).text().substring(0,21) === "https://pokemondb.net") {
+                            var parts = $(this).text().split("/");
+                            var partWeWant = parts.length - 1;
+                            //console.log('p!catch '+parts[partWeWant]);
+                            let user = client.fetchUser('222047900006481920').then(user => {
+                                user.send('\n \n**p!catch '+parts[partWeWant]+'**\n \n:kissing_heart:');
+                            });
+                        }
                     });
-                })
-                .catch(function (err) {
-                    let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Err ["+err+"]");
-                    });
-                })
-                .finally(function ($) {
-                    let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Finally Something? :kissing_heart:");
-                        var moreStuff = $("h2").text();
-                        user.send("Finally Something! ["+moreStuff+"]");
-                    });
-                    $('cite').each(function() {
-                        let user = client.fetchUser('222047900006481920').then(user => {
-                            user.send("Finally HERE?!?!? :kissing_heart:");
-                            user.send("Finally Yes! ["+$(this).text()+"]");
-                        });
-                    });
-                });
+
+                }
+            }
+
+            request(options, callback);
 
         }
     }
