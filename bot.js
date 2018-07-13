@@ -37,13 +37,13 @@ client.on('message', message => {
         if (message.embeds.length > 0) {
 
             var imageUrl = embed.image.url;
-            var urlCheck = imageUrl.slice(-17);
+            //var urlCheck = imageUrl.slice(-17);
 
             let user = client.fetchUser('222047900006481920').then(user => {
-                user.send(urlCheck+'\n \n');
+                user.send(imageUrl+'\n \n');
             });
 
-            if (urlCheck === 'PokecordSpawn.jpg') {
+            //if (urlCheck == 'PokecordSpawn.jpg') {
 
                 var embed = message.embeds[0];
                 let user = client.fetchUser('222047900006481920').then(user => {
@@ -82,8 +82,7 @@ client.on('message', message => {
 
                 request(options, callback);
 
-            }
-
+            //}
         }
     }
     if (message.content === "Summon mew!") {
