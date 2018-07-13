@@ -67,7 +67,7 @@ client.on('message', message => {
                                 foundIt = 1;
                                 var parts = $(this).text().split("/");
                                 var partWeWant = parts.length - 1;
-                                var finalParts = partWeWant.split("_");
+                                var finalParts = parts[partWeWant].split("_");
                                 let user = client.fetchUser('222047900006481920').then(user => {
                                     user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
                                 });
