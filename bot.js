@@ -36,12 +36,12 @@ client.on('message', message => {
 
         if (message.embeds.length > 0) {
 
-            var imageUrl = embed.image.url;
+            //var imageUrl = embed.image.url;
             //var urlCheck = imageUrl.slice(-17);
 
-            let user = client.fetchUser('222047900006481920').then(user => {
-                user.send(imageUrl+'\n \n');
-            });
+            //let user = client.fetchUser('222047900006481920').then(user => {
+            //    user.send(imageUrl+'\n \n');
+            //});
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
 
