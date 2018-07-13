@@ -36,16 +36,17 @@ client.on('message', message => {
 
         if (message.embeds.length > 0) {
 
-            //var imageUrl = embed.image.url;
-            //var urlCheck = imageUrl.slice(-17);
+            var embed = message.embeds[0];
 
-            /*let user = client.fetchUser('222047900006481920').then(user => {
+            var imageUrl = embed.image.url;
+            var urlCheck = imageUrl.slice(-17);
+
+            let user = client.fetchUser('222047900006481920').then(user => {
                 user.send(imageUrl+'\n \n');
-            });*/
+            });
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
 
-                var embed = message.embeds[0];
                 let user = client.fetchUser('222047900006481920').then(user => {
                     user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
                 });
