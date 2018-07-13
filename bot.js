@@ -62,13 +62,16 @@ client.on('message', message => {
                         var $ = cheerio.load(body);
                         var foundIt = 0;
                         $('cite').each(function() {
-                            if ($(this).text().substring(0,21) === "https://pokemondb.net") {
+                            if ($(this).text().substring(0,34) === "https://bulbapedia.bulbagarden.net" &&
+                                $(this).text().indexOf("_(Pokémon)") > 0) {
                                 foundIt = 1;
                                 var parts = $(this).text().split("/");
                                 var partWeWant = parts.length - 1;
+                                var finalParts = partWeWant.split("_");
                                 let user = client.fetchUser('222047900006481920').then(user => {
-                                    user.send('**p!catch '+parts[partWeWant]+'**\n \n:kissing_heart:\n \n');
+                                    user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
                                 });
+                                return false;
                             }
                         });
                         if (foundIt == 0) {
