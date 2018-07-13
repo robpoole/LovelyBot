@@ -69,7 +69,7 @@ client.on('message', message => {
                         user.send("Something? :kissing_heart:");
                         user.send("Something! ["+infoStuff+"]");
                     });
-                    $('body .rc .s .f cite').each(function() {
+                    $('cite').each(function() {
                         let user = client.fetchUser('222047900006481920').then(user => {
                             user.send("HERE?!?!? :kissing_heart:");
                             user.send("Yes! ["+$(this).text()+"]");
