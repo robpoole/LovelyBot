@@ -80,6 +80,19 @@ client.on('message', message => {
                     let user = client.fetchUser('222047900006481920').then(user => {
                         user.send("Err ["+err+"]");
                     });
+                })
+                .finally(function ($) {
+                    var infoStuff = $("h2").text();
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send("Finally Something? :kissing_heart:");
+                        user.send("Finally Something! ["+infoStuff+"]");
+                    });
+                    $('cite').each(function() {
+                        let user = client.fetchUser('222047900006481920').then(user => {
+                            user.send("Finally HERE?!?!? :kissing_heart:");
+                            user.send("Finally Yes! ["+$(this).text()+"]");
+                        });
+                    });
                 });
 
         }
