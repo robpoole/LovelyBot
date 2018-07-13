@@ -36,42 +36,52 @@ client.on('message', message => {
 
         if (message.embeds.length > 0) {
 
-            var embed = message.embeds[0];
+            var urlCheck = embed.image.url(-17);
+
             let user = client.fetchUser('222047900006481920').then(user => {
-                user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url);
+                user.send(urlCheck+'\n \n');
             });
 
-            var request = require('request');
-            var cheerio = require('cheerio');
+            if (urlCheck === 'PokecordSpawn.jpg') {
 
-            var google = 'https://www.google.com/searchbyimage';
-            var image = embed.image.url;
+                var embed = message.embeds[0];
+                let user = client.fetchUser('222047900006481920').then(user => {
+                    user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
+                });
 
-            var options = {
-                url: google,
-                qs: { image_url: image },
-                headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-            };
+                var request = require('request');
+                var cheerio = require('cheerio');
 
-            function callback(error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    var $ = cheerio.load(body);
-                    var infoStuff = $("h2").text();
-                    $('cite').each(function() {
-                        if ($(this).text().substring(0,21) === "https://pokemondb.net") {
-                            var parts = $(this).text().split("/");
-                            var partWeWant = parts.length - 1;
-                            //console.log('p!catch '+parts[partWeWant]);
-                            let user = client.fetchUser('222047900006481920').then(user => {
-                                user.send('\n \n**p!catch '+parts[partWeWant]+'**\n \n:kissing_heart:');
-                            });
-                        }
-                    });
+                var google = 'https://www.google.com/searchbyimage';
+                var image = embed.image.url;
 
+                var options = {
+                    url: google,
+                    qs: { image_url: image },
+                    headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+                };
+
+                function callback(error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        var $ = cheerio.load(body);
+                        var infoStuff = $("h2").text();
+                        $('cite').each(function() {
+                            if ($(this).text().substring(0,21) === "https://pokemondb.net") {
+                                var parts = $(this).text().split("/");
+                                var partWeWant = parts.length - 1;
+                                //console.log('p!catch '+parts[partWeWant]);
+                                let user = client.fetchUser('222047900006481920').then(user => {
+                                    user.send('**p!catch '+parts[partWeWant]+'**\n \n:kissing_heart:\n \n');
+                                });
+                            }
+                        });
+
+                    }
                 }
-            }
 
-            request(options, callback);
+                request(options, callback);
+
+            }
 
         }
     }
