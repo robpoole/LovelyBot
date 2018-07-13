@@ -60,17 +60,22 @@ client.on('message', message => {
                 function callback(error, response, body) {
                     if (!error && response.statusCode == 200) {
                         var $ = cheerio.load(body);
-                        var infoStuff = $("h2").text();
+                        var foundIt = 0;
                         $('cite').each(function() {
                             if ($(this).text().substring(0,21) === "https://pokemondb.net") {
+                                foundIt = 1;
                                 var parts = $(this).text().split("/");
                                 var partWeWant = parts.length - 1;
-                                //console.log('p!catch '+parts[partWeWant]);
                                 let user = client.fetchUser('222047900006481920').then(user => {
                                     user.send('**p!catch '+parts[partWeWant]+'**\n \n:kissing_heart:\n \n');
                                 });
                             }
                         });
+                        if (foundIt == 0) {
+                            let user = client.fetchUser('222047900006481920').then(user => {
+                                user.send('**Go manual!**\n \n:kissing_heart:\n \n');
+                            });
+                        }
 
                     }
                 }
