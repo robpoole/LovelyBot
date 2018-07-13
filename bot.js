@@ -39,7 +39,7 @@ client.on('message', message => {
             var embed = message.embeds[0];
 
             //if (urlCheck == 'PokecordSpawn.jpg') {
-            if (embed.image.url) {
+            if (embed.image.url !== null) {
 
                 /*let user = client.fetchUser('222047900006481920').then(user => {
                     user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
