@@ -36,7 +36,8 @@ client.on('message', message => {
 
         if (message.embeds.length > 0) {
 
-            var urlCheck = embed.image.url(-17);
+            var imageUrl = embed.image.url;
+            var urlCheck = imageUrl.slice(-17);
 
             let user = client.fetchUser('222047900006481920').then(user => {
                 user.send(urlCheck+'\n \n');
