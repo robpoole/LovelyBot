@@ -71,7 +71,6 @@ client.on('message', message => {
                                 let user = client.fetchUser('222047900006481920').then(user => {
                                     user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
                                 });
-                                return false;
                             }
                         });
                         if (foundIt == 0) {
