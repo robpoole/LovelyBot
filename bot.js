@@ -70,10 +70,10 @@ client.on('message', message => {
                     //var infoStuff = $('body .rc .s .f').find('cite').text();
 
                     let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send("Something! :kissing_heart:");
-                        var infoStuff = $("dev.gb_Db").text();
+                        user.send("Something? :kissing_heart:");
+                        user.send("Something! ["+$("h2").text()+"]");
+                        var infoStuff = $("div.gb_Db").text();
                         user.send("Something? ["+infoStuff+"]");
-                        user.send("Something? ["+$("dev.gb_Db").text()+"]");
                     });
                 })
                 .catch(function (err) {
