@@ -85,6 +85,9 @@ client.on('message', message => {
     if (message.content === "Summon mew!") {
         message.reply('I would if I could :kissing_heart:');
     }
+    if (message.content === "p!catch mew") {
+        message.reply('You wish Jedi! :kissing_heart:');
+    }
 
 });
 
