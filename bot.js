@@ -38,11 +38,8 @@ client.on('message', message => {
 
             var embed = message.embeds[0];
 
-            let user = client.fetchUser('222047900006481920').then(user => {
-                user.send('hi! '+embed);
-            });
-
             //if (urlCheck == 'PokecordSpawn.jpg') {
+            if (embed.image.url) {
 
                 /*let user = client.fetchUser('222047900006481920').then(user => {
                     user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
@@ -80,7 +77,7 @@ client.on('message', message => {
 
                 request(options, callback);
 
-            //}
+            }
         }
     }
     if (message.content === "Summon mew!") {
