@@ -42,7 +42,7 @@ client.on('message', message => {
 
                 var imageUrl = embed.image.url;
                 var urlCheck = imageUrl.slice(-17);
-                //if (urlCheck == 'PokecordSpawn.jpg') {
+                if (urlCheck == 'PokecordSpawn.jpg') {
 
                     var Pokemon = {
                         "7b9b7079e59d81741818f804d788fe9d": "shinx",
@@ -862,56 +862,12 @@ client.on('message', message => {
                     .then(function(res) {
                         var image = new Buffer(res.data, 'binary');
                         var hash = crypto.createHash('md5').update(image).digest('hex');
-                        console.log(Pokemon[hash]);
                         let user = client.fetchUser('222047900006481920').then(user => {
                             user.send('**p!catch '+Pokemon[hash]+'**\n \n :kissing_heart: \n \n ');
                         });
                     });
 
-                    /*let user = client.fetchUser('222047900006481920').then(user => {
-                        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
-                    });
-
-                    var request = require('request');
-                    var cheerio = require('cheerio');
-
-                    var google = 'https://www.google.com/searchbyimage';
-                    var image = embed.image.url;
-
-                    var options = {
-                        url: google,
-                        qs: { image_url: image },
-                        headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                    };
-
-                    function callback(error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                            var $ = cheerio.load(body);
-                            var foundIt = 0;
-                            $('cite').each(function() {
-                                if ($(this).text().substring(0,34) === "https://bulbapedia.bulbagarden.net" &&
-                                    $(this).text().indexOf("_(Pokémon)") > 0) {
-                                    foundIt = 1;
-                                    var parts = $(this).text().split("/");
-                                    var partWeWant = parts.length - 1;
-                                    var finalParts = parts[partWeWant].split("_");
-                                    let user = client.fetchUser('222047900006481920').then(user => {
-                                        user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
-                                    });
-                                }
-                            });
-                            if (foundIt == 0) {
-                                let user = client.fetchUser('222047900006481920').then(user => {
-                                    user.send('**Go manual!**\n \n:kissing_heart:\n \n');
-                                });
-                            }
-
-                        }
-                    }
-
-                    request(options, callback);*/
-
-                //}
+                }
             }
         }
     }
