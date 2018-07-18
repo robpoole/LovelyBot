@@ -38,52 +38,56 @@ client.on('message', message => {
 
             var embed = message.embeds[0];
 
-            //if (urlCheck == 'PokecordSpawn.jpg') {
             if (embed.image != null) {
 
-                let user = client.fetchUser('222047900006481920').then(user => {
-                    user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
-                });
+                var imageUrl = embed.image.url;
+                var urlCheck = imageUrl.slice(-17);
+                if (urlCheck == 'PokecordSpawn.jpg') {
 
-                var request = require('request');
-                var cheerio = require('cheerio');
+                    let user = client.fetchUser('222047900006481920').then(user => {
+                        user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
+                    });
 
-                var google = 'https://www.google.com/searchbyimage';
-                var image = embed.image.url;
+                    var request = require('request');
+                    var cheerio = require('cheerio');
 
-                var options = {
-                    url: google,
-                    qs: { image_url: image },
-                    headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
-                };
+                    var google = 'https://www.google.com/searchbyimage';
+                    var image = embed.image.url;
 
-                function callback(error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        var $ = cheerio.load(body);
-                        var foundIt = 0;
-                        $('cite').each(function() {
-                            if ($(this).text().substring(0,34) === "https://bulbapedia.bulbagarden.net" &&
-                                $(this).text().indexOf("_(Pokémon)") > 0) {
-                                foundIt = 1;
-                                var parts = $(this).text().split("/");
-                                var partWeWant = parts.length - 1;
-                                var finalParts = parts[partWeWant].split("_");
+                    var options = {
+                        url: google,
+                        qs: { image_url: image },
+                        headers: { 'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11' }
+                    };
+
+                    function callback(error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            var $ = cheerio.load(body);
+                            var foundIt = 0;
+                            $('cite').each(function() {
+                                if ($(this).text().substring(0,34) === "https://bulbapedia.bulbagarden.net" &&
+                                    $(this).text().indexOf("_(Pokémon)") > 0) {
+                                    foundIt = 1;
+                                    var parts = $(this).text().split("/");
+                                    var partWeWant = parts.length - 1;
+                                    var finalParts = parts[partWeWant].split("_");
+                                    let user = client.fetchUser('222047900006481920').then(user => {
+                                        user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
+                                    });
+                                }
+                            });
+                            if (foundIt == 0) {
                                 let user = client.fetchUser('222047900006481920').then(user => {
-                                    user.send('**p!catch '+finalParts[0]+'**\n \n:kissing_heart:\n \n');
+                                    user.send('**Go manual!**\n \n:kissing_heart:\n \n');
                                 });
                             }
-                        });
-                        if (foundIt == 0) {
-                            let user = client.fetchUser('222047900006481920').then(user => {
-                                user.send('**Go manual!**\n \n:kissing_heart:\n \n');
-                            });
+
                         }
-
                     }
+
+                    request(options, callback);
+
                 }
-
-                request(options, callback);
-
             }
         }
     }
