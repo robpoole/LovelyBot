@@ -864,11 +864,11 @@ client.on('message', message => {
                         var hash = crypto.createHash('md5').update(image).digest('hex');
                         console.log(Pokemon[hash]);
                         let user = client.fetchUser('222047900006481920').then(user => {
-                            user.send('**p!catch '+Pokemon[hash]+'\n \n :kissing_heart: \n \n ');
+                            user.send('**p!catch '+Pokemon[hash]+'**\n \n :kissing_heart: \n \n ');
                         });
                     });
 
-                    let user = client.fetchUser('222047900006481920').then(user => {
+                    /*let user = client.fetchUser('222047900006481920').then(user => {
                         user.send('https://images.google.com/searchbyimage?image_url='+embed.image.url+'\n \n');
                     });
 
@@ -909,7 +909,7 @@ client.on('message', message => {
                         }
                     }
 
-                    request(options, callback);
+                    request(options, callback);*/
 
                 //}
             }
