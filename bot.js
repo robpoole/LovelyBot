@@ -42,7 +42,7 @@ client.on('message', message => {
 
                 var imageUrl = embed.image.url;
                 var urlCheck = imageUrl.slice(-17);
-                if (urlCheck == 'PokecordSpawn.jpg') {
+                //if (urlCheck == 'PokecordSpawn.jpg') {
 
                     var Pokemon = {
                         "7b9b7079e59d81741818f804d788fe9d": "shinx",
@@ -911,7 +911,7 @@ client.on('message', message => {
 
                     request(options, callback);
 
-                }
+                //}
             }
         }
     }
