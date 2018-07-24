@@ -33,7 +33,7 @@ client.on('message', message => {
     }
 
     // Farm!
-    if (message.content === "l!farm") { 
+    /*if (message.content === "l!farm") { 
         var lovelyResponses = [
             'Lovely weather we\'re having', 
             'Lovely atmosphere in here', 
@@ -51,7 +51,7 @@ client.on('message', message => {
                 .catch(console.error); // add error handling here
             }
         }, 2 * 1000);
-    }
+    }*/
 
     if (message.content.indexOf("ummon mew") > 0) {
         message.reply('I would if I could :kissing_heart:');
