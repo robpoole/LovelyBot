@@ -871,11 +871,15 @@ client.on('message', message => {
             }
         }
     }
-    if (message.content === "Summon mew!") {
+    if (message.content.indexOf("ummon mew") > 0) {
         message.reply('I would if I could :kissing_heart:');
     }
     if (message.content === "p!catch mew") {
         message.reply('You wish Jedi! :kissing_heart:');
+    }
+    var randomNumber = Math.floor(Math.random() * 1000) + 1;
+    if (randomNumber == 1000) {
+        message.reply("You're the best! :kissing_heart:");
     }
 
 });
