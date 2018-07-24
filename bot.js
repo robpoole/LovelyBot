@@ -42,7 +42,7 @@ client.on('message', message => {
             'Lovely jubbly'
         ];
 
-        var counter = 30;
+        var counter = 100;
         setInterval(function() {
             counter--
             if (counter > 0) {
@@ -50,7 +50,7 @@ client.on('message', message => {
                 message.channel.send(randResponse+' :kissing_heart:')
                 .catch(console.error); // add error handling here
             }
-        }, 20 * 1000);
+        }, 2 * 1000);
     }
 
     if (message.content.indexOf("ummon mew") > 0) {
