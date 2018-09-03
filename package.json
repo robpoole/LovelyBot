@@ -7,6 +7,7 @@
     "start": "node bot.js"
   },
   "dependencies": {
+    "ajax-request": "^1.2.3",
     "axios": "^0.18.0",
     "discord.js": "^11.1.0"
   }
