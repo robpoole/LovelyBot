@@ -2,68 +2,44 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('message', message => {
-    if (message.content === 'l! help') {
-        message.author.sendMessage("Hey there! \n \nThis is what the LovelyBot currently has up for grabs \n \n**8! [your question]**\n    ask the magic 8-ball a question!")
-    }
-    if (message.content.substring(0, 2) === '8!') {
-        var eightBallResponses = [
-            'It is certain', 
-            'It is decidedly so', 
-            'Without a doubt', 
-            'Yes - definitely', 
-            'You may rely on it', 
-            'As I see it, yes', 
-            'Most likely', 
-            'Outlook good', 
-            'Yes', 
-            'Signs point to yes', 
-            'Reply hazy, try again', 
-            'Ask again later', 
-            'Better not tell you now', 
-            'Cannot predict now', 
-            'Concentrate and ask again', 
-            'Don\'t count on it', 
-            'My reply is no', 
-            'My sources say no', 
-            'Outlook not so good', 
-            'Very doubtful'
-        ];
-        var randResponse = eightBallResponses[Math.floor(Math.random() * eightBallResponses.length)];
-        message.reply(randResponse+' :kissing_heart:');
+
+    // Lovely Rank
+    if (message.content.substring(0, 2) === 'l!') {
+
+        var request = require('ajax-request');
+
+        request({
+            url: 'http://www.robpoole.co.uk/lovely/api.php?user='+message.author.id+'&command='+message.content,
+            method: 'GET',
+            json: true
+        }, function(err, res, body) {
+        
+            message.channel.send({ 
+                embed: {
+                    color: 0xff004e,
+                    width: 600,
+                    title: body['title'],
+                    description: body['description'],
+                    fields: body['fields'],
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL,
+                        text: "Courtesy of LovelyBot"
+                    }
+                }
+            });
+            
+        });
+
     }
 
-    // Farm!
-    if (message.content === "l!farm") { 
-        var lovelyResponses = [
-            'Lovely weather we\'re having', 
-            'Lovely atmosphere in here', 
-            'Lovely night for some vidya games', 
-            'Lovely day', 
-            'Lovely jubbly'
-        ];
-
-        var counter = 100;
-        setInterval(function() {
-            counter--
-            if (counter > 0) {
-                var randResponse = lovelyResponses[Math.floor(Math.random() * lovelyResponses.length)];
-                message.channel.send(randResponse+' :kissing_heart:')
-                .catch(console.error); // add error handling here
-            }
-        }, 2 * 1000);
-    }
-
-    if (message.content.indexOf("ummon mew") > 0) {
-        message.reply('I would if I could :kissing_heart:');
-    }
-    if (message.content === "p!catch mew") {
-        message.reply('You wish Jedi! :kissing_heart:');
-    }
+    // Random act of kindness
     var randomNumber = Math.floor(Math.random() * 1000) + 1;
     if (randomNumber == 1000) {
         message.reply("You're the best! :kissing_heart:");
     }
 
+    // Pokecord assistance
     if (message.author.username === "Pokécord") {
 
         if (message.embeds.length > 0) {
@@ -897,9 +873,6 @@ client.on('message', message => {
                         var image = new Buffer(res.data, 'binary');
                         var hash = crypto.createHash('md5').update(image).digest('hex');
                         message.channel.send("!catch "+Pokemon[hash]+" :kissing_heart:").catch(console.error);
-                        /*let user = client.fetchUser('222047900006481920').then(user => {
-                            user.send('**p!catch '+Pokemon[hash]+'** :kissing_heart:');
-                        });*/
                     });
 
                 }
@@ -910,4 +883,5 @@ client.on('message', message => {
 });
 
 // THIS  MUST  BE  THIS  WAY
+//client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
 client.login(process.env.BOT_TOKEN);
