@@ -888,7 +888,7 @@ client.on('message', message => {
                             if (y < 0.3) {
                                 pokeHint += pokeName[i];
                             } else {
-                                pokeHint += '*';
+                                pokeHint += '§';
                             }
                         }
                         message.channel.send("!catch "+pokeHint+" :kissing_heart:").catch(console.error);
