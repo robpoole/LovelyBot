@@ -1,6 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+/*
+client.on('guildMemberAdd', member => {
+    member.guild.channels.get('channelID').send("Welcome"); 
+});
+*/
+
 client.on('message', message => {
 
     // Lovely Rank
@@ -9,7 +15,7 @@ client.on('message', message => {
         var request = require('ajax-request');
 
         request({
-            url: 'http://www.robpoole.co.uk/lovely/api.php?user='+message.author.id+'&command='+message.content,
+            url: 'http://www.robpoole.co.uk/api.php?user='+message.author.id+'&command='+message.content,
             method: 'GET',
             json: true
         }, function(err, res, body) {
@@ -21,6 +27,9 @@ client.on('message', message => {
                     title: body['title'],
                     description: body['description'],
                     fields: body['fields'],
+                    thumbnail: {
+                        url: body['img']
+                    },
                     timestamp: new Date(),
                     footer: {
                         icon_url: client.user.avatarURL,
