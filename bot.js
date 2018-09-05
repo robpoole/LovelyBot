@@ -882,8 +882,8 @@ client.on('message', message => {
                         var image = new Buffer(res.data, 'binary');
                         var hash = crypto.createHash('md5').update(image).digest('hex');
                         var pokeName = Pokemon[hash];
-                        var pokeHint = "";
-                        for (var i = 0; i < pokeName.length; i++) {
+                        var pokeHint = pokeName[0];
+                        for (var i = 1; i < pokeName.length; i++) {
                             var y = Math.random();
                             if (y < 0.3) {
                                 pokeHint += pokeName[i];
