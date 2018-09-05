@@ -881,7 +881,17 @@ client.on('message', message => {
                     .then(function(res) {
                         var image = new Buffer(res.data, 'binary');
                         var hash = crypto.createHash('md5').update(image).digest('hex');
-                        message.channel.send("!catch "+Pokemon[hash]+" :kissing_heart:").catch(console.error);
+                        var pokeName = Pokemon[hash];
+                        var pokeHint = "";
+                        for (var i = 0; i < pokeName.length; i++) {
+                            var y = Math.random();
+                            if (y < 0.3) {
+                                pokeHint += pokeName[i];
+                            } else {
+                                pokeHint += '*';
+                            }
+                        }
+                        message.channel.send("!catch "+pokeHint+" :kissing_heart:").catch(console.error);
                     });
 
                 }
