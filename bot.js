@@ -15,7 +15,7 @@ client.on('message', message => {
         var request = require('ajax-request');
 
         request({
-            url: 'http://www.robpoole.co.uk/api.php?user='+message.author.id+'&command='+message.content,
+            url: 'http://www.robpoole.co.uk/lovely/api.php?user='+message.author.id+'&command='+message.content,
             method: 'GET',
             json: true
         }, function(err, res, body) {
