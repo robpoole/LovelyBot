@@ -42,6 +42,11 @@ client.on('message', message => {
 
     }
 
+    // Pay respects
+    if (message.content === 'f') {
+        message.channel.send(message.author.username+" pays respect :pray:").catch(console.error);
+    }
+
     // Random act of kindness
     var randomNumber = Math.floor(Math.random() * 1000) + 1;
     if (randomNumber == 1000) {
