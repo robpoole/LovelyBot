@@ -44,7 +44,7 @@ client.on('message', message => {
 
     // Pay respects
     if (message.content === 'f') {
-        message.channel.send(message.author.username+" pays respect :pray:").catch(console.error);
+        message.channel.send(message.author.username+" pays respects :pray:").catch(console.error);
     }
 
     // Random act of kindness
