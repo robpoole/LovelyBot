@@ -13,7 +13,7 @@ function manageRoles()
     var request = require('ajax-request');
 
     request({
-        url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/ajax.php?user='+message.author.id+'&command='+message.content,
+        url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=updateRoles',
         //url: 'http://rp.lovely.com/ajax.php?method=updateRoles',
         method: 'GET',
         json: true
@@ -41,7 +41,7 @@ function manageRoles()
 client.on("ready", () => {
     var interval = setInterval (function () {
         manageRoles();
-    }, 15 * 60 * 1000); 
+    }, 1 * 60 * 1000); 
 });
 
 client.on('message', message => {
