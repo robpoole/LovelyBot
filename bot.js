@@ -13,8 +13,8 @@ function manageRoles()
     var request = require('ajax-request');
 
     request({
-        //url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/ajax.php?user='+message.author.id+'&command='+message.content,
-        url: 'http://rp.lovely.com/ajax.php?method=updateRoles',
+        url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/ajax.php?user='+message.author.id+'&command='+message.content,
+        //url: 'http://rp.lovely.com/ajax.php?method=updateRoles',
         method: 'GET',
         json: true
     }, function(err, res, body) {
@@ -52,8 +52,8 @@ client.on('message', message => {
         var request = require('ajax-request');
 
         request({
-            //url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/api.php?user='+message.author.id+'&command='+message.content,
-            url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
+            url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/api.php?user='+message.author.id+'&command='+message.content,
+            //url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
             method: 'GET',
             json: true
         }, function(err, res, body) {
@@ -945,5 +945,5 @@ client.on('message', message => {
 });
 
 // THIS  MUST  BE  THIS  WAY
-client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
-//client.login(process.env.BOT_TOKEN);
+//client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
+client.login(process.env.BOT_TOKEN);
