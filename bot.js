@@ -7,6 +7,43 @@ client.on('guildMemberAdd', member => {
 });
 */
 
+function manageRoles()
+{
+    console.log('manageRoles');
+    var request = require('ajax-request');
+
+    request({
+        //url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/ajax.php?user='+message.author.id+'&command='+message.content,
+        url: 'http://rp.lovely.com/ajax.php?method=updateRoles',
+        method: 'GET',
+        json: true
+    }, function(err, res, body) {
+
+        let lovelyGuild = client.guilds.get("172093104008986624");
+        //console.log("my object: %o", lovelyGuild);
+
+        console.log('discord id: '+body['discordId']);
+        let member = lovelyGuild.members.get(body['discordId']);
+        for (var key in body['roles']) {
+            console.log(key+' = '+body['roles'][key]);
+            let role = lovelyGuild.roles.find('name', key);
+            var roleId = role.id;
+            console.log('role id: '+roleId);
+            if (body['roles'][key] == 1) {
+                member.addRole(roleId);
+            } else {
+                member.removeRole(roleId);
+            }
+        }
+        
+    });
+}
+client.on("ready", () => {
+    var interval = setInterval (function () {
+        manageRoles();
+    }, 15 * 60 * 1000); 
+});
+
 client.on('message', message => {
 
     // Lovely Rank
@@ -15,7 +52,8 @@ client.on('message', message => {
         var request = require('ajax-request');
 
         request({
-            url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/api.php?user='+message.author.id+'&command='+message.content,
+            //url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/api.php?user='+message.author.id+'&command='+message.content,
+            url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
             method: 'GET',
             json: true
         }, function(err, res, body) {
@@ -907,5 +945,5 @@ client.on('message', message => {
 });
 
 // THIS  MUST  BE  THIS  WAY
-//client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
-client.login(process.env.BOT_TOKEN);
+client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
+//client.login(process.env.BOT_TOKEN);
