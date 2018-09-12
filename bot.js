@@ -1,11 +1,22 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-/*
 client.on('guildMemberAdd', member => {
-    member.guild.channels.get('channelID').send("Welcome"); 
+    var discordId = member.id;
+    console.log('discord id: '+discordId);
+    var request = require('ajax-request');
+
+    request({
+        url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
+        //url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
+        method: 'GET'
+    }, function(err, res, body) {
+
+        // Done
+        console.log('done');
+        
+    });
 });
-*/
 
 function manageRoles()
 {
@@ -20,7 +31,6 @@ function manageRoles()
     }, function(err, res, body) {
 
         let lovelyGuild = client.guilds.get("172093104008986624");
-        //console.log("my object: %o", lovelyGuild);
 
         console.log('discord id: '+body['discordId']);
         let member = lovelyGuild.members.get(body['discordId']);
