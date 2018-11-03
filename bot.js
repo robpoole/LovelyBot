@@ -4,11 +4,16 @@ const client = new Discord.Client();
 client.on('guildMemberAdd', member => {
     var discordId = member.id;
     console.log('discord id: '+discordId);
+
+    let role = lovelyGuild.roles.find('name', 'Common');
+    var roleId = role.id;
+    member.addRole(roleId);
+
     var request = require('ajax-request');
 
     request({
-        url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
-        //url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
+        //url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
+        url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
         method: 'GET'
     }, function(err, res, body) {
 
@@ -34,15 +39,17 @@ function manageRoles()
 
         console.log('discord id: '+body['discordId']);
         let member = lovelyGuild.members.get(body['discordId']);
-        for (var key in body['roles']) {
-            console.log(key+' = '+body['roles'][key]);
-            let role = lovelyGuild.roles.find('name', key);
-            var roleId = role.id;
-            console.log('role id: '+roleId);
-            if (body['roles'][key] == 1) {
-                member.addRole(roleId);
-            } else {
-                member.removeRole(roleId);
+        if (typeof member !== 'undefined') {
+            for (var key in body['roles']) {
+                console.log(key+' = '+body['roles'][key]);
+                let role = lovelyGuild.roles.find('name', key);
+                var roleId = role.id;
+                console.log('role id: '+roleId);
+                if (body['roles'][key] == 1) {
+                    member.addRole(roleId);
+                } else {
+                    member.removeRole(roleId);
+                }
             }
         }
         
