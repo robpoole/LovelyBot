@@ -961,6 +961,4 @@ client.on('message', message => {
 
 });
 
-// THIS  MUST  BE  THIS  WAY
-//client.login("NDY2NjM1MzY1ODczMzUyNzE0.DmlipA.c0_z4tunAdXDJ-IQbMBDNEBW4ik"); // Lovely Bot
 client.login(process.env.BOT_TOKEN);
