@@ -12,8 +12,8 @@ client.on('guildMemberAdd', member => {
     var request = require('ajax-request');
 
     request({
-        //url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
-        url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
+        url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
+        //url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
         method: 'GET'
     }, function(err, res, body) {
 
