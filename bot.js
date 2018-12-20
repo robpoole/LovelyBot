@@ -37,18 +37,21 @@ function manageRoles()
 
         let lovelyGuild = client.guilds.get("172093104008986624");
 
-        console.log('discord id: '+body['discordId']);
-        let member = lovelyGuild.members.get(body['discordId']);
-        if (typeof member !== 'undefined') {
-            for (var key in body['roles']) {
-                console.log(key+' = '+body['roles'][key]);
-                let role = lovelyGuild.roles.find('name', key);
-                var roleId = role.id;
-                console.log('role id: '+roleId);
-                if (body['roles'][key] == 1) {
-                    member.addRole(roleId);
-                } else {
-                    member.removeRole(roleId);
+        if (typeof lovelyGuild !== 'undefined') {
+
+            console.log('discord id: '+body['discordId']);
+            let member = lovelyGuild.members.get(body['discordId']);
+            if (typeof member !== 'undefined') {
+                for (var key in body['roles']) {
+                    console.log(key+' = '+body['roles'][key]);
+                    let role = lovelyGuild.roles.find('name', key);
+                    var roleId = role.id;
+                    console.log('role id: '+roleId);
+                    if (body['roles'][key] == 1) {
+                        member.addRole(roleId);
+                    } else {
+                        member.removeRole(roleId);
+                    }
                 }
             }
         }
