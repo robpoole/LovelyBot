@@ -105,6 +105,11 @@ client.on('message', message => {
         message.channel.send(message.author.username+" pays respects :pray:").catch(console.error);
     }
 
+    // Yeh Yeet!
+    if (message.content === 'y' || message.content === 'Y') {
+        message.channel.send(message.author.username+" yah yeets :100: :ok_hand:").catch(console.error);
+    }
+
     // Random act of kindness
     var randomNumber = Math.floor(Math.random() * 1000) + 1;
     if (randomNumber == 1000) {
