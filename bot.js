@@ -23,23 +23,6 @@ client.on('guildMemberAdd', member => {
     });
 });
 
-function clanOnline()
-{
-    client.channels.get("626142994663342082").send("test...");
-
-    let channel = bot.channels.get("626142994663342082");
-
-    channel.fetchMessages({ limit: 1 }).then(messages => {
-        let lastMessage = messages.first();
-        console.log(lastMessage);
-
-        if (!lastMessage.author.bot) {
-            // The author of the last message wasn't a bot
-        }
-    })
-    .catch(console.error);
-}
-
 function manageRoles()
 {
     console.log('manageRoles');
@@ -75,6 +58,24 @@ function manageRoles()
         
     });
 }
+
+function clanOnline()
+{
+    client.channels.get("626142994663342082").send("test...");
+
+    let channel = client.channels.get("626142994663342082");
+
+    channel.fetchMessages({ limit: 1 }).then(messages => {
+        let lastMessage = messages.first();
+        console.log(lastMessage);
+
+        if (!lastMessage.author.bot) {
+            // The author of the last message wasn't a bot
+        }
+    })
+    .catch(console.error);
+}
+
 client.on("ready", () => {
     var interval = setInterval (function () {
         manageRoles();
