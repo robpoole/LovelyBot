@@ -23,6 +23,11 @@ client.on('guildMemberAdd', member => {
     });
 });
 
+function clanOnline()
+{
+    client.channels.get("625721306951843851").send("test!");
+}
+
 function manageRoles()
 {
     console.log('manageRoles');
@@ -61,6 +66,7 @@ function manageRoles()
 client.on("ready", () => {
     var interval = setInterval (function () {
         manageRoles();
+        clanOnline();
     }, 1 * 60 * 1000); 
 });
 
