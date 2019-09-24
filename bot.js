@@ -63,12 +63,24 @@ function clanOnline()
 {
     //client.channels.get("626142994663342082").send("test...");
 
-    let channel = client.channels.get("626142994663342082");
+    var request = require('ajax-request');
 
-    channel.fetchMessages({around: 626148378446659619, limit: 1})
-    .then(msg => {
-        const fetchedMsg = msg.first();
-        fetchedMsg.edit('hihi');
+    request({
+        url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=clanOnline',
+        //url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
+        method: 'GET',
+        json: true
+    }, function(err, res, body) {
+    
+        let channel = client.channels.get("626142994663342082");
+        console.log(body);
+
+        channel.fetchMessages({around: 626148378446659619, limit: 1})
+        .then(msg => {
+            const fetchedMsg = msg.first();
+            fetchedMsg.edit(body);
+        });
+        
     });
 }
 
