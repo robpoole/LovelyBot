@@ -61,19 +61,13 @@ function manageRoles()
 
 function clanOnline()
 {
-    client.channels.get("626142994663342082").send("test...");
+    //client.channels.get("626142994663342082").send("test...");
 
-    let channel = client.channels.get("626142994663342082");
-
-    channel.fetchMessages({ limit: 1 }).then(messages => {
-        let lastMessage = messages.first();
-        console.log(lastMessage);
-
-        if (!lastMessage.author.bot) {
-            // The author of the last message wasn't a bot
-        }
-    })
-    .catch(console.error);
+    message.channel.fetchMessages({around: 626148378446659619, limit: 1})
+    .then(msg => {
+        const fetchedMsg = msg.first();
+        fetchedMsg.edit('hihi');
+    });
 }
 
 client.on("ready", () => {
