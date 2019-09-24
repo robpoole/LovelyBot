@@ -86,7 +86,7 @@ function clanOnline()
             var onlineList = "";
 
             for (var i = 0; i < body.length; i++) {
-                onlineList += body[i] + "\n";
+                onlineList += "**" + body[i] + "**\n";
             }
             theMsg += onlineList;
         }
@@ -94,7 +94,7 @@ function clanOnline()
         var today = new Date();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-        theMsg += "*Last updated at "+time+"*";
+        theMsg += "\n*Last updated at "+time+"*";
 
         channel.fetchMessages({around: 626148378446659619, limit: 1})
         .then(msg => {
