@@ -75,19 +75,31 @@ function clanOnline()
         let channel = client.channels.get("626142994663342082");
         console.log(body);
 
-        var onlineList = "";
+        var theMsg = "";
 
-        for (var i = 0; i < body.length; i++) {
-            var obj = body[i];
-            onlineList += obj + "\n";
+        if (body.length == 0) {
 
-            console.log(obj.id);
+            theMsg = "No one is online :( \n";
+
+        } else {
+
+            var onlineList = "";
+
+            for (var i = 0; i < body.length; i++) {
+                onlineList += body[i] + "\n";
+            }
+            theMsg += onlineList;
         }
+
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        theMsg += "*Last updated at "+time+"*";
 
         channel.fetchMessages({around: 626148378446659619, limit: 1})
         .then(msg => {
             const fetchedMsg = msg.first();
-            fetchedMsg.edit(onlineList);
+            fetchedMsg.edit(theMsg);
         });
         
     });
