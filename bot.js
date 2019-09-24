@@ -25,7 +25,7 @@ client.on('guildMemberAdd', member => {
 
 function clanOnline()
 {
-    client.channels.get("625721306951843851").send("test!");
+    client.channels.get("626142994663342082").send("test...");
 }
 
 function manageRoles()
