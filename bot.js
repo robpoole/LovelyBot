@@ -63,7 +63,9 @@ function clanOnline()
 {
     //client.channels.get("626142994663342082").send("test...");
 
-    message.channel.fetchMessages({around: 626148378446659619, limit: 1})
+    let channel = client.channels.get("626142994663342082");
+
+    channel.fetchMessages({around: 626148378446659619, limit: 1})
     .then(msg => {
         const fetchedMsg = msg.first();
         fetchedMsg.edit('hihi');
