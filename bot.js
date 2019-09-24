@@ -66,7 +66,7 @@ function manageRoles()
 client.on("ready", () => {
     var interval = setInterval (function () {
         manageRoles();
-        clanOnline();
+        //clanOnline();
     }, 1 * 60 * 1000); 
 });
 
