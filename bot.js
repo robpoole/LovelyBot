@@ -75,10 +75,19 @@ function clanOnline()
         let channel = client.channels.get("626142994663342082");
         console.log(body);
 
+        var onlineList = "";
+
+        for (var i = 0; i < body.length; i++) {
+            var obj = body[i];
+            onlineList += obj + "\n";
+
+            console.log(obj.id);
+        }
+
         channel.fetchMessages({around: 626148378446659619, limit: 1})
         .then(msg => {
             const fetchedMsg = msg.first();
-            fetchedMsg.edit(body);
+            fetchedMsg.edit(onlineList);
         });
         
     });
