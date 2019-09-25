@@ -71,7 +71,7 @@ function clanOnline()
     //client.channels.get("625721306951843851").send("test...");
     //client.channels.get("626142994663342082").send("test...");
 
-    let channel = client.channels.get("625721306951843851");
+    /*let channel = client.channels.get("625721306951843851");
 
     channel.fetchMessages({ limit: 1 }).then(messages => {
         let lastMessage = messages.first();
@@ -81,9 +81,9 @@ function clanOnline()
             // The author of the last message wasn't a bot
         }
     })
-    .catch(console.error);
+    .catch(console.error);*/
 
-    /*var request = require('ajax-request');
+    var request = require('ajax-request');
 
     request({
         url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=clanOnline',
@@ -114,7 +114,7 @@ function clanOnline()
         var today = new Date();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-        channel.fetchMessages({around: 626148378446659619, limit: 1})
+        channel.fetchMessages({around: 626329154496757780, limit: 1})
         .then(msg => {
             const fetchedMsg = msg.first();
             fetchedMsg.edit({ 
@@ -132,7 +132,7 @@ function clanOnline()
             });
         });
         
-    });*/
+    });
 }
 
 client.on("ready", () => {
