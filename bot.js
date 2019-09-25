@@ -61,9 +61,29 @@ function manageRoles()
 
 function clanOnline()
 {
+    console.log('hi');
+
+    // lovely who-online    625721306951843851
+    // lovely message       ?
+    // rob who-online       626142994663342082
+    // rob message          626148378446659619
+
+    client.channels.get("625721306951843851").send("test...");
     //client.channels.get("626142994663342082").send("test...");
 
-    var request = require('ajax-request');
+    /*let channel = client.channels.get("625721306951843851");
+
+    channel.fetchMessages({ limit: 1 }).then(messages => {
+        let lastMessage = messages.first();
+        console.log(lastMessage);
+
+        if (!lastMessage.author.bot) {
+            // The author of the last message wasn't a bot
+        }
+    })
+    .catch(console.error);*/
+
+    /*var request = require('ajax-request');
 
     request({
         url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=clanOnline',
@@ -106,13 +126,13 @@ function clanOnline()
                     timestamp: new Date(),
                     footer: {
                         icon_url: client.user.avatarURL,
-                        text: "Last updated at "+time+" GMT"
+                        text: "Courtesy of LovelyBot"
                     }
                 }
             });
         });
         
-    });
+    });*/
 }
 
 client.on("ready", () => {
