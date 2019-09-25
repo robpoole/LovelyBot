@@ -92,7 +92,7 @@ function clanOnline()
         json: true
     }, function(err, res, body) {
     
-        let channel = client.channels.get("626142994663342082");
+        let channel = client.channels.get("625721306951843851");
         console.log(body);
 
         var theMsg = "";
