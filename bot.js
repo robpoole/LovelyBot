@@ -13,7 +13,6 @@ client.on('guildMemberAdd', member => {
 
     request({
         url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=newMember&discordId='+discordId,
-        //url: 'http://rp.lovely.com/ajax.php?method=newMember&discordId='+discordId,
         method: 'GET'
     }, function(err, res, body) {
 
@@ -25,12 +24,11 @@ client.on('guildMemberAdd', member => {
 
 function manageRoles()
 {
-    console.log('manageRoles');
+    //console.log('manageRoles');
     var request = require('ajax-request');
 
     request({
         url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=updateRoles',
-        //url: 'http://rp.lovely.com/ajax.php?method=updateRoles',
         method: 'GET',
         json: true
     }, function(err, res, body) {
@@ -39,14 +37,14 @@ function manageRoles()
 
         if (typeof lovelyGuild !== 'undefined') {
 
-            console.log('discord id: '+body['discordId']);
+            //console.log('discord id: '+body['discordId']);
             let member = lovelyGuild.members.get(body['discordId']);
             if (typeof member !== 'undefined') {
                 for (var key in body['roles']) {
-                    console.log(key+' = '+body['roles'][key]);
+                    //console.log(key+' = '+body['roles'][key]);
                     let role = lovelyGuild.roles.find('name', key);
                     var roleId = role.id;
-                    console.log('role id: '+roleId);
+                    //console.log('role id: '+roleId);
                     if (body['roles'][key] == 1) {
                         member.addRole(roleId);
                     } else {
@@ -61,33 +59,11 @@ function manageRoles()
 
 function clanOnline()
 {
-    console.log('hi');
-
-    // lovely who-online    625721306951843851
-    // lovely message       ?
-    // rob who-online       626142994663342082
-    // rob message          626148378446659619
-
-    //client.channels.get("625721306951843851").send("test...");
-    //client.channels.get("626142994663342082").send("test...");
-
-    /*let channel = client.channels.get("625721306951843851");
-
-    channel.fetchMessages({ limit: 1 }).then(messages => {
-        let lastMessage = messages.first();
-        console.log(lastMessage);
-
-        if (!lastMessage.author.bot) {
-            // The author of the last message wasn't a bot
-        }
-    })
-    .catch(console.error);*/
 
     var request = require('ajax-request');
 
     request({
         url: 'http://www.robpoole.co.uk/lovely/ajax.php?method=clanOnline',
-        //url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
         method: 'GET',
         json: true
     }, function(err, res, body) {
@@ -151,7 +127,6 @@ client.on('message', message => {
 
         request({
             url: 'http://www.robpoole.co.uk/lovely/'+new Date().getTime()+'/api.php?user='+message.author.id+'&command='+message.content,
-            //url: 'http://rp.lovely.com/api.php?user='+message.author.id+'&command='+message.content,
             method: 'GET',
             json: true
         }, function(err, res, body) {
