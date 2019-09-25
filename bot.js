@@ -68,10 +68,10 @@ function clanOnline()
     // rob who-online       626142994663342082
     // rob message          626148378446659619
 
-    client.channels.get("625721306951843851").send("test...");
+    //client.channels.get("625721306951843851").send("test...");
     //client.channels.get("626142994663342082").send("test...");
 
-    /*let channel = client.channels.get("625721306951843851");
+    let channel = client.channels.get("625721306951843851");
 
     channel.fetchMessages({ limit: 1 }).then(messages => {
         let lastMessage = messages.first();
@@ -81,7 +81,7 @@ function clanOnline()
             // The author of the last message wasn't a bot
         }
     })
-    .catch(console.error);*/
+    .catch(console.error);
 
     /*var request = require('ajax-request');
 
