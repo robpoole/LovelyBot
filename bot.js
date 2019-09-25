@@ -94,12 +94,22 @@ function clanOnline()
         var today = new Date();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-        theMsg += "\n*Last updated at "+time+"*";
-
         channel.fetchMessages({around: 626148378446659619, limit: 1})
         .then(msg => {
             const fetchedMsg = msg.first();
-            fetchedMsg.edit(theMsg);
+            fetchedMsg.edit({ 
+                embed: {
+                    color: 0xff004e,
+                    width: 600,
+                    title: "Online Clan Members",
+                    description: theMsg,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL,
+                        text: "Last updated at "+time+" GMT"
+                    }
+                }
+            });
         });
         
     });
